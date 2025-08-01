@@ -1,12 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
+
   <groupId>in.RAHAM</groupId>
   <artifactId>NETFLIX</artifactId>
-  <packaging>war</packaging>
   <version>1.2.2</version>
+  <packaging>war</packaging>
   <name>Java Home myweb</name>
   <url>http://maven.apache.org</url>
 
@@ -14,6 +16,7 @@
     <docker.image.prefix>kammana</docker.image.prefix>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
   <dependencies>
@@ -33,6 +36,14 @@
 
   <build>
     <plugins>
+      <!-- WAR Plugin (latest stable for Java 8/17 support) -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.3.2</version>
+      </plugin>
+
+      <!-- Compiler Plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -40,6 +51,7 @@
         <configuration>
           <source>${maven.compiler.source}</source>
           <target>${maven.compiler.target}</target>
+          <encoding>${project.build.sourceEncoding}</encoding>
         </configuration>
       </plugin>
     </plugins>
@@ -59,8 +71,8 @@
   <pluginRepositories>
     <pluginRepository>
       <id>maven1</id>
-      <name>Maven.org</name>
-      <url>http://repo1.maven.org/maven2</url>
+      <name>Maven Central</name>
+      <url>https://repo.maven.apache.org/maven2</url>
     </pluginRepository>
   </pluginRepositories>
 
